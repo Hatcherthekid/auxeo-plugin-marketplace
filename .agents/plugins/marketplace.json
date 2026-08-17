@@ -1,0 +1,20 @@
+{
+  "name": "auxeo",
+  "interface": {
+    "displayName": "Auxeo"
+  },
+  "plugins": [
+    {
+      "name": "auxeo",
+      "source": {
+        "source": "local",
+        "path": "./plugins/auxeo"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Data & Analytics"
+    }
+  ]
+}

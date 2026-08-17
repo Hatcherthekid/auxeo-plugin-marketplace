@@ -1,0 +1,40 @@
+{
+  "name": "auxeo",
+  "version": "0.1.4",
+  "description": "Auxeo \u2014 Chat to Growth\uff1a\u9762\u5411\u5e7f\u544a\u6295\u653e\u7684\u8bc1\u636e\u67e5\u8be2\u3001\u5206\u6790\u8bca\u65ad\u3001\u914d\u7f6e\u6838\u5bf9\u3001\u76d1\u63a7\u548c\u62a5\u544a\u63d2\u4ef6\u3002",
+  "author": {
+    "name": "Auxeo"
+  },
+  "license": "Proprietary",
+  "keywords": [
+    "ads",
+    "advertising",
+    "Meta",
+    "Google Ads",
+    "TikTok Ads",
+    "AppsFlyer",
+    "analytics"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Auxeo",
+    "shortDescription": "\u67e5\u8be2\u3001\u8bca\u65ad\u3001\u914d\u7f6e\u3001\u76d1\u63a7\u5e76\u62a5\u544a Meta\u3001Google Ads\u3001TikTok \u4e0e AppsFlyer \u6570\u636e",
+    "longDescription": "Auxeo \u2014 Chat to Growth\u3002\u9762\u5411\u5e7f\u544a\u6570\u636e\u7684\u53ea\u8bfb\u8bc1\u636e\u67e5\u8be2\u3001\u5206\u6790\u8bca\u65ad\u3001\u6570\u636e\u5b9a\u4e49\u4e0e\u5339\u914d\u3001\u76d1\u63a7\u544a\u8b66\u548c\u62a5\u544a\u6c47\u62a5\u3002\u672c\u5730\u6e90\u63d2\u4ef6\u4fdd\u7559 8 \u4e2a\u804c\u8d23\u6e05\u6670\u7684 Skill\uff1bRemote \u53d1\u5e03\u5305\u63d0\u4f9b 7 \u4e2a\u7531 OAuth Ads Read MCP \u652f\u6491\u7684 Skill\uff0c\u4e0d\u5305\u542b\u672c\u5730\u9875\u9762\u63a7\u5236\u3002\u5206\u6790\u89c4\u5219\u4ecd\u5904\u4e8e\u5f85\u7528\u6237\u53c2\u4e0e\u8bbe\u8ba1\u72b6\u6001\uff0c\u4e0d\u4f1a\u9690\u5f0f\u8c03\u7528\u65e7\u9884\u7b97\u51b3\u7b56 runtime\u3002TikTok \u5df2\u5f00\u653e AF-first Facts\u3001Report\u3001Config/Hierarchy\u3001time-safe Entity\u3001Asset shared evidence\u3001Smart+ main-material media performance \u4e0e App identity \u7684\u53d7\u6cbb\u7406\u53ea\u8bfb\u67e5\u8be2\uff1bpartial/blocked \u8bc1\u636e\u4e0d\u4f1a\u5347\u7ea7\u4e3a\u5b8c\u6574\u4e8b\u5b9e\uff0c\u7d20\u6750\u5a92\u4f53\u6307\u6807\u4e0d\u5192\u5145\u7d20\u6750 AF \u5f52\u56e0\uff0c\u5e7f\u544a\u5e73\u53f0 Write \u672a\u5f00\u653e\u3002",
+    "developerName": "Auxeo",
+    "category": "Data & Analytics",
+    "capabilities": [
+      "Read",
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "\u5b9a\u4e49\u8d26\u6237\u3001\u5e94\u7528\u548c\u6307\u6807 mapping\uff0c\u6838\u5bf9\u6570\u636e\u65b0\u9c9c\u5ea6",
+      "\u5206\u6790 TikTok Campaign\u3001AdGroup\u3001Ad \u7684\u5e73\u53f0\u8f6c\u5316\u4e0e\u89c6\u9891\u5b8c\u64ad\u8868\u73b0",
+      "\u751f\u6210\u4e00\u4efd\u6709\u8bc1\u636e\u548c\u5f85\u529e\u4e8b\u9879\u7684\u5e7f\u544a\u7ba1\u7406\u62a5\u8868"
+    ],
+    "brandColor": "#0B2E4A",
+    "composerIcon": "./assets/composer-icon.png",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  },
+  "mcpServers": "./.mcp.json"
+}

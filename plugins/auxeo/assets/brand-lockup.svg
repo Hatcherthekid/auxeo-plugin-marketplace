@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="500" viewBox="0 0 1600 500" role="img" aria-labelledby="title desc">
+  <title id="title">Auxeo — Chat to Growth</title>
+  <desc id="desc">Auxeo brand lockup with the Auxeo growth mark and the slogan Chat to Growth.</desc>
+  <rect width="1600" height="500" rx="36" fill="#FFFFFF"/>
+  <image href="logo.png" x="72" y="72" width="356" height="356" preserveAspectRatio="xMidYMid meet"/>
+  <text x="520" y="246" fill="#0B2E4A" font-family="Inter, Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="142" font-weight="700" letter-spacing="-5">Auxeo</text>
+  <text x="528" y="340" fill="#6B7A86" font-family="Inter, Avenir Next, Helvetica Neue, Arial, sans-serif" font-size="54" font-weight="500" letter-spacing="1">Chat to Growth</text>
+</svg>

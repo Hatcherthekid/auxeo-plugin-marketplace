@@ -1,0 +1,14 @@
+interface:
+  display_name: "App 转化诊断"
+  short_description: "区分买量异常更可能来自广告、App 转化、归因数据还是业务政策"
+  default_prompt: "使用 $app-conversion-diagnosis 判断买量变差更可能属于哪个责任域。"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "ads_read"
+      description: "Ads Read MCP server"
+      transport: "stdio"
+
+policy:
+  allow_implicit_invocation: true

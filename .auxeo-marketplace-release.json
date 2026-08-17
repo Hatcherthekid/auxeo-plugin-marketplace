@@ -1,0 +1,18 @@
+{
+  "schema_version": "auxeo.public-marketplace-release.v1",
+  "marketplace_name": "auxeo",
+  "recommended_plugin_version": "0.1.4",
+  "source_git_commit": "aa5bdc7969221fe86650f41fcd232ab7b80d1d7f",
+  "artifact_sha256": "08d5d39804e8e0caaf37db38b9c6b71343407e6093fc24cb2980c1667bc3b5db",
+  "tool_schema_version": "AdsCapabilityMcpPublicSchema.v3",
+  "tool_schema_fingerprint": "4d8dd13f6e31fc1617649ffb501ccad221dd1c6c2486684656cb4bd002682f4c",
+  "skill_bundle_fingerprint": "201296638dec596956f928660c2420f2a51575c76797fb545f448b9cee75c0a5",
+  "mcp_resource": "https://ads.hatcher.best/auxeo/mcp",
+  "compatibility_policy": "current_and_previous_stable_plugin",
+  "rollback_plugin_version": "not_assigned",
+  "update_contract": {
+    "marketplace_snapshot": "refresh_git_marketplace",
+    "installed_plugin": "explicit_plugin_add",
+    "automatic_installed_plugin_update": false
+  }
+}

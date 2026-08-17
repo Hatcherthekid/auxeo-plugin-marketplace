@@ -1,0 +1,14 @@
+interface:
+  display_name: "付费用户增长运营"
+  short_description: "编排跨渠道买量日常巡检、专题诊断、动作复盘和报告追问流程"
+  default_prompt: "使用 $paid-growth-operations 基于受治理广告与归因产物完成本次买量运营任务。"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "ads_read"
+      description: "Ads Read MCP server"
+      transport: "stdio"
+
+policy:
+  allow_implicit_invocation: true
