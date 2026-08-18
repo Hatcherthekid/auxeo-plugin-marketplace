@@ -31,15 +31,16 @@ Analysis Artifact。完整顺序、现有 Meta/Google/TikTok 日报绑定和 Fol
 ## 执行顺序
 
 1. 明确 organization、App、渠道、业务日期、时区、币种政策和 D0/D1。
-2. 优先召回完全匹配的 `ReportArtifact` 或 `paid_growth_daily_scan_v1`；检查 scope、freshness、cohort、anchor 和 analysis signature。
-3. 没有可复用产物时，只有已经绑定 canonical builder 的本地 Host 才能触发同一 builder 的 lazy build；只具备 MCP 的弱 Host 必须返回 artifact missing，不能在 Prompt、Report renderer 或临时脚本中重做全盘扫描。
-4. 使用 `ads-portfolio-triage` 解释 bounded observations，确定是否值得补钻。
-5. 只有被选中的对象才使用 `ads-read-analysis` 和 `object_analysis_evidence_v2` 下钻；先声明规范化
+2. 如果任务涉及团队 KPI 或 App 业务事件，先读取 Metric Definition Evidence 和对应日期的 published Semantic Profile；把 definition/profile version、digest 与 source refs 带入后续 Artifact，缺失时只阻断依赖该语义的结论。
+3. 优先召回完全匹配的 `ReportArtifact` 或 `paid_growth_daily_scan_v1`；检查 scope、freshness、cohort、anchor 和 analysis signature。
+4. 没有可复用产物时，只有已经绑定 canonical builder 的本地 Host 才能触发同一 builder 的 lazy build；只具备 MCP 的弱 Host 必须返回 artifact missing，不能在 Prompt、Report renderer 或临时脚本中重做全盘扫描。
+5. 使用 `ads-portfolio-triage` 解释 bounded observations，确定是否值得补钻。
+6. 只有被选中的对象才使用 `ads-read-analysis` 和 `object_analysis_evidence_v2` 下钻；先声明规范化
    `analysis_question_key`，再只查询有信息增量的 Evidence View，不补齐固定集合。
-6. 涉及 App 范围异常时使用 `app-conversion-diagnosis`，先确定责任域和广告动作 Gate。
-7. 将同一 stable subject + symptom 的证据合并为一个 Issue；保留支持证据、反证、缺失证据和最新 observation。
-8. 只有已有 Action、Outcome 和 due queue 均 ready 时才复盘动作效果；不要把同期改善自动归因于动作。
-9. 输出统一 Review Artifact；需要正式报告时交给 Report Kernel 的 shadow/approved adapter，不直接拼接报告正文。
+7. 涉及 App 范围异常时使用 `app-conversion-diagnosis`，先确定责任域和广告动作 Gate。
+8. 将同一 stable subject + symptom 的证据合并为一个 Issue；保留支持证据、反证、缺失证据和最新 observation。
+9. 只有已有 Action、Outcome 和 due queue 均 ready 时才复盘动作效果；不要把同期改善自动归因于动作。
+10. 输出统一 Review Artifact；需要正式报告时交给 Report Kernel 的 shadow/approved adapter，不直接拼接报告正文。
 
 ## 证据和停止规则
 

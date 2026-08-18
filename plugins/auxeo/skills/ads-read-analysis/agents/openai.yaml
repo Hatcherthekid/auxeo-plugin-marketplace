@@ -6,7 +6,7 @@ interface:
 dependencies:
   tools:
     - type: "mcp"
-      value: "ads_read"
+      value: "auxeo_ads_read"
       description: "Ads Read MCP server"
       transport: "stdio"
 
