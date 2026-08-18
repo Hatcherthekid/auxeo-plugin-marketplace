@@ -5,7 +5,6 @@
       "description": "OAuth 保护的 Auxeo Ads Read Remote MCP；只读取当前成员被授权的 App、渠道、账户与已发布资源。",
       "type": "http",
       "url": "https://ads.hatcher.best/auxeo/mcp",
-      "oauth_resource": "https://ads.hatcher.best/auxeo/mcp",
       "oauth": {
         "client_id": "tpc_mBcDzxaq6LTBntmydVs5g2"
       }

@@ -7,7 +7,7 @@ Run these commands:
 ```bash
 codex plugin marketplace add https://github.com/Hatcherthekid/auxeo-plugin-marketplace.git --ref main
 codex plugin add auxeo@auxeo
-codex mcp login auxeo_ads_read --scopes ads.read,reports.generate
+codex mcp login auxeo_ads_read --scopes ads.read
 ```
 
 After authentication succeeds, start a new Codex task so the Auxeo skills and MCP tools are loaded.

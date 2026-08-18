@@ -14,10 +14,10 @@
   "source_exposure": "plugin_bundle_only",
   "server_authorization_required": true,
   "compatibility_policy": "current_and_previous_stable_plugin",
-  "plugin_version": "0.1.6",
-  "source_git_commit": "375f8fe091875671d60b9412f5884aefa2733604",
-  "built_at_utc": "2026-08-18T09:52:00.671621Z",
-  "artifact_sha256": "978f8de45fc0d69d39ac98168620a2f3f2fa19b9d9bfd864995c58a3c778254a",
+  "plugin_version": "0.1.7",
+  "source_git_commit": "d3a38a82c4eb9d5c41d2633d6e15aab3e01c731e",
+  "built_at_utc": "2026-08-18T16:04:58.257705Z",
+  "artifact_sha256": "1fb76d9349274b696a2e4516d57f83df62a910571baca82cf20484744021acf6",
   "tool_schema_version": "AdsCapabilityMcpPublicSchema.v3",
   "tool_schema_fingerprint": "cdd74f269bbc4db284953b8db4a8c96f2449bea93ed8eac012ef92e471731746",
   "skill_bundle_fingerprint": "d842ba1168e4ca5ac955f6885e3a8df11a1d8a43d9ca9810a8bde9a2a6e87d9b",
@@ -31,6 +31,11 @@
     "paid-growth-operations"
   ],
   "mcp_resource": "https://ads.hatcher.best/auxeo/mcp",
+  "oauth_scopes": [
+    "ads.read"
+  ],
+  "oauth_callback_base": "http://127.0.0.1:1455/callback",
+  "oauth_callback_uri": "http://127.0.0.1:1455/callback/uhLSdeza-k7p",
   "minimum_codex_version": "0.144.5",
   "tested_codex_versions": [
     "0.144.5"

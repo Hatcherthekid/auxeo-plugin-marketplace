@@ -9,7 +9,7 @@ analysis, monitoring, and reporting.
 ```bash
 codex plugin marketplace add https://github.com/Hatcherthekid/auxeo-plugin-marketplace.git --ref main
 codex plugin add auxeo@auxeo
-codex mcp login auxeo_ads_read --scopes ads.read,reports.generate
+codex mcp login auxeo_ads_read --scopes ads.read
 ```
 
 Start a new Codex task after authentication so the plugin tools and skills load.
