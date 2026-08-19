@@ -6,13 +6,13 @@ analysis, monitoring, and reporting.
 
 ## Install
 
-```bash
-codex plugin marketplace add https://github.com/Hatcherthekid/auxeo-plugin-marketplace.git --ref main
-codex plugin add auxeo@auxeo
-codex mcp login auxeo_ads_read --scopes ads.read
-```
+Ask your Auxeo workspace administrator to add the Auxeo marketplace once. Then
+open the Codex/ChatGPT Desktop Plugins Directory, install **Auxeo**, and complete
+the host-provided **Authenticate** flow. The host opens the Auxeo sign-in page and
+returns to the plugin automatically; users do not run an MCP login command, copy
+an authorization URL, or configure a localhost callback.
 
-Start a new Codex task after authentication so the plugin tools and skills load.
+Start a new Codex task after the Desktop app reports that authentication succeeded.
 
 This release requires Codex CLI/Desktop 0.144.5 or newer. Plugins are not
 supported in the Codex IDE extension. The unique `auxeo_ads_read` name avoids

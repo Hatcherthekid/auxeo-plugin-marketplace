@@ -1,9 +1,9 @@
 {
   "schema_version": "auxeo.public-marketplace-release.v1",
   "marketplace_name": "auxeo",
-  "recommended_plugin_version": "0.1.7",
-  "source_git_commit": "d3a38a82c4eb9d5c41d2633d6e15aab3e01c731e",
-  "artifact_sha256": "1fb76d9349274b696a2e4516d57f83df62a910571baca82cf20484744021acf6",
+  "recommended_plugin_version": "0.1.8",
+  "source_git_commit": "bb7b36038015df4fd547642d62b5a40ece0487ef",
+  "artifact_sha256": "ca3c7f6e2e9674a8570b731927908e6caed1d2e30db3ced098d406aef1beff17",
   "tool_schema_version": "AdsCapabilityMcpPublicSchema.v3",
   "tool_schema_fingerprint": "cdd74f269bbc4db284953b8db4a8c96f2449bea93ed8eac012ef92e471731746",
   "skill_bundle_fingerprint": "d842ba1168e4ca5ac955f6885e3a8df11a1d8a43d9ca9810a8bde9a2a6e87d9b",
@@ -11,13 +11,12 @@
   "oauth_scopes": [
     "ads.read"
   ],
-  "oauth_callback_base": "http://127.0.0.1:1455/callback",
-  "oauth_callback_uri": "http://127.0.0.1:1455/callback/uhLSdeza-k7p",
+  "oauth_registration_endpoint": "https://auxeo-prod.us.auth0.com/oidc/register",
   "compatibility_policy": "current_and_previous_stable_plugin",
-  "rollback_plugin_version": "0.1.6",
+  "rollback_plugin_version": "0.1.7",
   "update_contract": {
     "marketplace_snapshot": "refresh_git_marketplace",
-    "installed_plugin": "explicit_plugin_add",
+    "installed_plugin": "desktop_plugins_directory",
     "automatic_installed_plugin_update": false
   }
 }

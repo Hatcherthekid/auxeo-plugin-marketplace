@@ -4,20 +4,20 @@
   "authentication": {
     "protocol": "oauth_2_1",
     "pkce_required": true,
-    "selected_client_registration": "predefined_public_client",
+    "selected_client_registration": "dynamic_client_registration",
     "allowed_candidates": [
-      "predefined_public_client"
+      "dynamic_client_registration"
     ],
-    "dynamic_client_registration_required": false,
-    "auth0_registration_state": "not_verified_by_release_builder"
+    "dynamic_client_registration_required": true,
+    "auth0_dcr_state": "required_external_gate"
   },
   "source_exposure": "plugin_bundle_only",
   "server_authorization_required": true,
   "compatibility_policy": "current_and_previous_stable_plugin",
-  "plugin_version": "0.1.7",
-  "source_git_commit": "d3a38a82c4eb9d5c41d2633d6e15aab3e01c731e",
-  "built_at_utc": "2026-08-18T16:04:58.257705Z",
-  "artifact_sha256": "1fb76d9349274b696a2e4516d57f83df62a910571baca82cf20484744021acf6",
+  "plugin_version": "0.1.8",
+  "source_git_commit": "bb7b36038015df4fd547642d62b5a40ece0487ef",
+  "built_at_utc": "2026-08-19T16:35:35.669406Z",
+  "artifact_sha256": "ca3c7f6e2e9674a8570b731927908e6caed1d2e30db3ced098d406aef1beff17",
   "tool_schema_version": "AdsCapabilityMcpPublicSchema.v3",
   "tool_schema_fingerprint": "cdd74f269bbc4db284953b8db4a8c96f2449bea93ed8eac012ef92e471731746",
   "skill_bundle_fingerprint": "d842ba1168e4ca5ac955f6885e3a8df11a1d8a43d9ca9810a8bde9a2a6e87d9b",
@@ -34,8 +34,7 @@
   "oauth_scopes": [
     "ads.read"
   ],
-  "oauth_callback_base": "http://127.0.0.1:1455/callback",
-  "oauth_callback_uri": "http://127.0.0.1:1455/callback/uhLSdeza-k7p",
+  "oauth_registration_endpoint": "https://auxeo-prod.us.auth0.com/oidc/register",
   "minimum_codex_version": "0.144.5",
   "tested_codex_versions": [
     "0.144.5"
@@ -43,6 +42,11 @@
   "minimum_server_contract": "AdsCapabilityMcpPublicSchema.v3",
   "rollback_plugin_version": "not_assigned",
   "publication_gates": {
+    "auth0_third_party_ads_read_user_grant": "required",
+    "auth0_google_connection_domain_level": "required",
+    "auth0_resource_parameter_compatibility_profile": "required",
+    "auth0_dcr_registration_ready": "required",
+    "desktop_on_install_authenticate": "required",
     "real_member_oauth_e2e": "required",
     "refresh_logout_reopen": "required",
     "authorized_and_denied_resource_queries": "required"
