@@ -19,23 +19,37 @@ Evidence View 只组装 typed refs，不把事实、特征、规则标签和动�
 把 Ads Read MCP 当作真实广告数据能力层，把任务理解、证据选择、继续查询和最终表达留给 Agent。不要把本 Skill 实现成固定路由器、旧 dynamic workflow 或黑盒 Agent。
 
 正式入口是 `auxeo_ads_read` MCP Server 暴露的只读 Tool：`ads_catalog_search`、`ads_catalog_describe`、
-`ads_data_health`、`ads_data_query`、`ads_workspace_analyze`、`ads_knowledge_search`、`ads_context_lookup`。
+`ads_capability_context`、`ads_data_health`、`ads_data_query`、`ads_workspace_analyze`、`ads_knowledge_search`、`ads_context_lookup`。
 如果 Tool 采用懒加载而暂未显示，应继续按 server 名或 Tool 名检索；不要回退到旧 runtime、旧 gateway、
 `AdsCoreClient`、直连 API、本地数据库或脚本冒充 MCP 证据。
 
 ## 工作原则
 
 1. 先理解用户真正要判断什么，不先把自然语言塞进预设流程。
-2. source、字段或指标不确定时，用 Catalog/Describe 获取正式 definition evidence，不凭记忆猜表、字段或公式；回答保留定义版本、digest 和 source refs。
+2. 用户没有提供内部 key 时，先用 `ads_capability_context` 取得当前 principal 的 opaque 资源、App/Promotion Target 查询 facet 和可执行 source；App 不是权限资源。`ads_data_query` 的 `current_authorized` 默认仍必须在未先调用 Context 时安全工作。
+3. source、字段或指标不确定时，用 Catalog/Describe 获取正式 definition evidence，不凭记忆猜表、字段或公式；回答保留定义版本、digest 和 source refs。
 3. 问题依赖 App 埋点、release/apply 等业务事件含义时，先读取该 App 与业务日期的 Semantic Profile，再查询事实。没有 `published + ready` binding 时只报告已知数据和缺失语义，不自行绑定事件。
 4. 平台术语用 Knowledge 解释；当前对象的预算 owner、出价或状态仍用 time-safe Config 证明，不能把通用知识当账户事实。
 5. 涉及“最近、今天、昨天、当前”时，用 Data Health 确认数据最新日期和覆盖范围。
 6. 用 Data Query 获取事实；根据 partial、空结果和 repair hints 修正 QuerySpec。
-7. 只有已有 evidence 需要聚合、排序、对比或派生时才用 Workspace Analyze；简单问题不跑完整工具链。
+8. 只有已有 evidence 需要聚合、排序、对比或派生时才用 Workspace Analyze；默认 SQL/operations，只在复杂 reshape/统计确有信息增量时使用 artifact-only 受限 Python。
 8. 信息增量不足时换 source、schema、grain、filter 或方法，不重复无效调用。
 9. 组织目标、SOP、账户结构或偏好用 Context Lookup；它不能覆盖 metric、source、permission 或 approval。
 10. 当前媒体政策可用 Web Search 核对，但网页结论不能覆盖内部账户证据。
 11. Tool 确实不可用时说明能力入口不可用，不声称旧代码调用等同于 MCP 调用。
+
+### 动态续查
+
+每次 `ads_data_query` 后先查看返回的 `continuation_options`，再按当前问题选择有信息增量的操作：
+`expand_relation` 展开当前结构中的对象关系，`breakdown` 增加日期、agency、network 等可用切分，
+`switch_profile` 切换到版位、Asset、Smart+ Material 等独立 report profile。不要假设所有 Campaign 都遵循
+`campaign -> adgroup -> ad`；Google PMax / Demand Gen、Meta dynamic creative、TikTok Smart+ / GMV Max 的结构可以不同。
+
+继续调用同一个 `ads_data_query`，直接把所选 option 的 `input_refs` 放入 `refinement.input_refs`，并使用其 opaque
+`transition_ref`。只分析部分父对象时，用 `selected_parent_keys=[{values: {...}}]` 提交 Artifact 证据行中真实存在的
+复合 key；不得自造 source、目标维度或父 ID。日期、可保留指标、filters、物理账户和权限由服务端继承复核；option
+标为 `partial/unknown` 或列出 `dropped_metrics` 时必须保留 limitation，必要时显式选择兼容指标。超过 100 个父对象时
+先在 Artifact 中排序或筛选。没有合适 option 时回到 Catalog/Describe 换 source，不能用名称猜层级。
 
 TikTok Report/Entity 必须显式指定 Campaign、AdGroup 或 Ad 的 `data_level`，三层独立解释、禁止跨层求和。平台转化不能冒充 AppsFlyer 经营漏斗。Entity source 不返回 Asset 行；Smart+ 素材关系与 shared Ad envelope 必须查询独立 Asset source，跨 Asset 不可加，也不能称为素材归因。partial/blocked 必须保留 limitation / cannot_judge。
 

@@ -15,7 +15,7 @@ description: 使用系统模板或用户规则配置并解释广告监控与告�
 2. 选择已登记模板，或把用户规则整理为 MonitorConfig 草案；不能从自然语言直接声称已发布。
 3. 绑定正式 source、字段、grain、窗口、freshness 和质量门槛，并用 Catalog/Describe 校验。
 4. 先生成 preview/backtest，展示触发、未触发、无法判断样例和预计通知量。
-5. 用户确认后才进入 publish/version；没有写入接口时停在草案。
+5. 用户确认后，使用独立 `auxeo_control` 的 definition draft/preview/publish/pause lifecycle；preview 不等于 publish，publish 不等于 delivery。
 6. 运行时读取受治理 payload/registry，必要时用 `ads_data_health`、`ads_data_query` 和 `ads_workspace_analyze` 补证据。
 7. 输出必须处理、需要核查、当前正常和无法判断，并保留 artifact/evidence ref。
 

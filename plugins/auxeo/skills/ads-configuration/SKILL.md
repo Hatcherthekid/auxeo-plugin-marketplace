@@ -28,7 +28,7 @@ description: 定义和核对广告数据中的实体 mapping、指标/KPI、标�
 ## 边界
 
 - 用户定义不能覆盖 Catalog 的正式口径、权限、审批或 evidence。
-- 语义 Profile 属于组织私有 evidence；只读取当前 principal 已授权 App，客户端不得自报 organization 扩大范围。
+- App 不是权限资源。语义 Profile 属于组织私有 evidence；只读取当前 principal 已授权 source/provider scope 中可观察的 App facet，客户端不得自报 organization 扩大范围。
 - TikTok Config/Hierarchy、Asset shared-performance 和 App identity 必须保留 health、snapshot provenance 与 limitation；Asset shared envelope 不能称为素材归因。
 - TikTok `placement_type/placements`、bid strategy/amount、budget 与 budget owner（CBO/ABO）来自
   `tiktok_config_status_hierarchy`；字段为 null 时先按合同判断该策略是否本就不要求金额，不能直接宣称漏采。
