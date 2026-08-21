@@ -1,19 +1,19 @@
 {
   "schema_version": "auxeo.public-marketplace-release.v1",
   "marketplace_name": "auxeo",
-  "recommended_plugin_version": "0.1.9",
-  "source_git_commit": "713ac988f3f38e6c1aae34ebb74008bb974bb6a3",
-  "artifact_sha256": "d5e8fbf56128fb7cd64af31023333b287e6bd005e5af82415969cd800e5451ae",
+  "recommended_plugin_version": "0.2.0",
+  "source_git_commit": "db93ca1317aec7ece11ff68f000dd4a2551d73c6",
+  "artifact_sha256": "86dd873d6dba580110a2158ce18e160f0acac57f9013bae57b3acb9d59b7e09f",
   "tool_schema_version": "AdsCapabilityMcpPublicSchema.v3",
-  "tool_schema_fingerprint": "af1702776be80649383197678a95fbbf99a867adaf35e66042102538252a6dda",
-  "skill_bundle_fingerprint": "35081fce378633bdf366e58c10b3b73654437aaff3cb2b61854e41fb22754d21",
+  "tool_schema_fingerprint": "57dc72eab6477b6fa795928ddc93ff10d34b3274d837d70772b04ade925500f2",
+  "skill_bundle_fingerprint": "8ebcada0081583a46f816779f7dc2fa1b357d9568c12fee72783dcd0ed57efbb",
   "mcp_resource": "https://ads.hatcher.best/auxeo/mcp",
   "oauth_scopes": [
     "ads.read"
   ],
   "oauth_registration_endpoint": "https://auxeo-prod.us.auth0.com/oidc/register",
   "compatibility_policy": "current_and_previous_stable_plugin",
-  "rollback_plugin_version": "0.1.8",
+  "rollback_plugin_version": "0.1.9",
   "update_contract": {
     "marketplace_snapshot": "refresh_git_marketplace",
     "installed_plugin": "desktop_plugins_directory",

@@ -1,14 +1,7 @@
 interface:
   display_name: "Ads · 数据定义与匹配"
   short_description: "定义实体、指标和标签并核对数据是否可用"
-  default_prompt: "使用 $ads-configuration 定义或核对这个广告账户的实体 mapping、指标/KPI、标签、source authority 和数据 freshness，并指出哪些定义仍不能判断。"
-
-dependencies:
-  tools:
-    - type: "mcp"
-      value: "auxeo_ads_read"
-      description: "Ads Read MCP server with governed configuration and health evidence"
-      transport: "stdio"
+  default_prompt: "使用 $ads-configuration 核对当前授权范围内的实体、指标、标签、source authority 和 freshness，并指出仍不能判断的定义。"
 
 policy:
   allow_implicit_invocation: true

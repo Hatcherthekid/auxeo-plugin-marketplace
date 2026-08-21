@@ -1,14 +1,7 @@
 interface:
   display_name: "Ads · 报表与汇报"
   short_description: "用模板或自定义配置生成有证据的广告报表"
-  default_prompt: "使用 $ads-reporting 选择或配置一份报表，先预览结构和数据边界，再基于受治理的 Ads evidence 生成可追问的管理报表。"
-
-dependencies:
-  tools:
-    - type: "mcp"
-      value: "auxeo_ads_read"
-      description: "Ads Read MCP server with report generation and evidence tools"
-      transport: "stdio"
+  default_prompt: "使用 $ads-reporting 选择或配置一份报告，先预览结构和数据边界，再基于受治理 evidence 生成可追问结果。"
 
 policy:
   allow_implicit_invocation: true

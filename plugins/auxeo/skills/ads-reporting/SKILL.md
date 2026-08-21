@@ -1,29 +1,29 @@
 ---
 name: ads-reporting
-description: 使用系统报告模板或用户配置设计、生成和追问广告管理报告、优化师报告与专题报告，复用 ReportArtifact 和数据质量状态；不直接发送飞书/IM或执行广告平台写操作。
+description: 设计、生成和追问广告报告；报告定义、字段、章节、交付配置和可用目的地由服务端动态声明。
 ---
 
-# Ads · 报表与汇报
+# Ads · 报告
 
-这是私有团队 Remote MCP 发布版的报表入口。它只使用发布包实际暴露的 Ads Read 工具，不依赖本地 Dashboard 控制工具。
+## 入口
 
-## 工作流程
+新任务先调用 `ads_capability_context`，确认当前授权范围、报告能力和 server guidance。只有 capability context 暴露正式 Report 生成能力时，才调用它返回的当前服务端入口。不要把固定 App、账户或飞书标识写进报告入口。
 
-1. 识别受众、渠道、cadence、日期、范围和重点。
-2. 选择已登记 ReportDefinition，或整理 ReportConfig；不清楚的字段不能默认为全量。
-3. 校验 source、metric binding、grain、窗口、freshness 和权限。
-4. 先生成 synthetic preview，展示章节、样例图表、缺失数据和 cannot_judge。
-5. 用户确认后才运行受治理生成或形成发布草案；公开 `ads_report_generate` 当前只支持已登记范围，不能宣传为任意渠道通用生成。
-6. 报告事实来自 ReportArtifact / EvidencePack / Ads Read evidence；解释需要补证时调用 `ads-read-analysis`。
-7. 保留 source、partial、claim/action ID 和 follow-up anchor；文字不能覆盖事实或不确定性。
+## 编排
 
-## ReportConfig 最小字段
+1. 明确受众、日期、时区、范围、指标口径、比较方式、重点、cadence 与展示偏好；指标口径使用 `cohort` 或 `actual`，这些需求不等于服务端当前都已支持。
+2. 创建新报告时，先把选定的 `fact_semantics` 传给 Catalog 选择 source，再用 Describe 核对字段；把同一口径传给 Query，并用 Workspace SQL 或受限 Python 把各 grain 物化为当前成员可读的 Evidence Artifact；不要让 Report renderer 重新取数或计算指标。
+3. 从 `report.user_defined.v1` capability card 读取 `contract_ref`，再读取该 MCP Resource 取得当前服务端的完整 ReportSpec JSON Schema、composition envelope、digest 和示例；不要猜嵌套字段。无法由已发布字段或 Workspace 表达时返回 unsupported，不编造配置。
+4. 把 `mode=preview|generate`、`primary_window`、`spec`、`input_refs` 和可选 `feishu_projection` 放入 `composition`；`report_id` 对用户定义报告可省略并由服务端按 spec 生成。先创建真实数据 preview，用户确认后复用同一 ReportSpec、换成最新 Evidence Artifact 生成正式 ReportArtifact。
+5. 用户定义 Report 完全继承 Evidence Artifact 的 principal/binding scope，不要求 Report 权限、App 权限、固定账户或单一 `resource_ref`。只有兼容的已注册 Google 报告继续使用 opaque `resource_ref`；`app_ref` 仍只是查询 facet。
+6. 用户定义报告优先使用 `composition.primary_window`，连续范围最多 92 天；已注册兼容报告继续使用 `report_config.primary_window` 或旧 `report_date`。滚动周 section 必须声明源行的 `start_field/end_field`，编译器会过滤超窗行。`include_png_long_image` 生成长图；`composition.feishu_projection=true` 还要求长图，并且只返回不含收件人或 token 的 ProjectionPlan Artifact。
+7. 生成前校验 source、metric、grain、freshness、稳定 `ads.read` 与数据覆盖；Report 本身没有独立权限。追问优先复用父 artifact 与 anchor，必要时再补证。
+8. 区分 preview、已生成 Artifact、已发布版本、ProjectionPlan 与 delivery receipt；只有 receipt 能证明已发送。
+9. 同一 section 只能使用一种 fact semantics；需要双口径时拆成独立 section，并分别标注日期语义，禁止合并求和。
 
-`audience`、`scope`、`sources`、`metrics/dimensions`、`grain`、`date/window`、`comparison`、`sections`、`charts`、`narrative style`、`timezone`、`cadence`、`route`、`enabled`、`version`。
+## 边界
 
-## 交付边界
-
-- 模板、用户配置、preview、ReportArtifact、editorial projection、发布版本和 delivery receipt 是不同对象。
-- 报告生成、渲染、调度和发送是不同环节；本 Skill 不直接发送飞书/IM。
-- 没有父报告 artifact 的追问不能伪造上下文。
-- 不执行预算、出价、状态、素材或创编写操作。
+- 文案不能覆盖事实、不确定性或正式指标定义。
+- 没有可用 destination、配置权限或审批时，只返回草案与缺口。
+- 正式 Report 生成入口只生成受权限约束的 Report/Artifact，不代表已配置排期、发布或交付。
+- 不直接发送飞书/IM，不修改广告平台。

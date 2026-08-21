@@ -1,33 +1,23 @@
 ---
 name: ads-monitoring
-description: 使用系统模板或用户规则配置并解释广告监控与告警，覆盖余额、投放状态、政策与配置变更、数据刷新和报告投递阻断；支持预览与回测，不直接发送 IM 或执行平台写操作。
+description: 解释和配置广告监控意图，覆盖经营、投放状态、数据健康与交付异常；规则、字段和目的地由服务端动态声明。
 ---
 
-# Ads · 监控与告警
+# Ads · 监控
 
-本 Skill 回答“现在有没有必须处理的风险”和“要监控什么”。可以使用系统模板或整理用户自定义规则，但应优先复用已经通过 Ads Read 暴露的结构化 payload、registry、ReportArtifact 或 MCP evidence，不重新生成普通日报。
+## 入口
 
-旧飞书监控脚本只作为已有 producer 和输出形态的定位线索；未通过 Ads Read 或 artifact 暴露的事实必须标记“当前不可读”，不能用私有路径或记忆冒充证据。
+新任务先调用 `ads_capability_context`，确认当前授权资源、可用监控能力、数据健康与可用 destination。不要把 App 当作权限边界。
 
-## 工作流程
+## 编排
 
-1. 确认对象、渠道、业务时区、数据最新日期和用户目标。
-2. 选择已登记模板，或把用户规则整理为 MonitorConfig 草案；不能从自然语言直接声称已发布。
-3. 绑定正式 source、字段、grain、窗口、freshness 和质量门槛，并用 Catalog/Describe 校验。
-4. 先生成 preview/backtest，展示触发、未触发、无法判断样例和预计通知量。
-5. 用户确认后，使用独立 `auxeo_control` 的 definition draft/preview/publish/pause lifecycle；preview 不等于 publish，publish 不等于 delivery。
-6. 运行时读取受治理 payload/registry，必要时用 `ads_data_health`、`ads_data_query` 和 `ads_workspace_analyze` 补证据。
-7. 输出必须处理、需要核查、当前正常和无法判断，并保留 artifact/evidence ref。
+1. 明确监控对象、窗口、时区、比较基线、严重度和期望通知方式。
+2. 按服务端 guidance 选择证据与配置能力；阈值、状态、字段、规则模板和交付方式不得写死在 Skill。
+3. 先验证权限、freshness、grain、币种、样本与数据覆盖，再解释触发或未触发原因。
+4. 返回规则草案或已存在配置的证据、适用范围、限制与下一步；只有服务端 receipt 才能证明配置或交付已生效。
 
-## MonitorConfig 最小字段
+## 边界
 
-`scope`、`source/metric`、`grain`、`condition`、`window/baseline`、`freshness gate`、`severity`、`cooldown`、`dedupe key`、`owner/route`、`timezone`、`enabled`、`version`。
-
-用户阈值可以改变触发条件，但不能改变正式指标语义、权限、source authority 或 cannot_judge。模板、配置、回测、发布版本、运行状态和 delivery receipt 是不同对象。
-
-## 输出与边界
-
-- 每个告警包含严重级别、对象、业务日期、触发事实、freshness、影响、人工下一步和证据引用。
-- 缺事实、registry 失效、日期不匹配或 threshold 缺失时输出无法判断/投递阻断，不能把缺失当作正常。
-- 不直接发送飞书/IM，不静默修改规则、通知对象或调度。
-- 告警是待核查信号，不自动证明经营因果；不根据名称猜预算、状态或政策。
+- 不把缺数当作零，也不把短期波动自动定性为异常。
+- 不在模型中重算正式指标或绕过审批。
+- 不直接修改广告平台或发送外部消息。
