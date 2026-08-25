@@ -3,5 +3,13 @@ interface:
   short_description: "从多 App、多渠道和大量广告对象中筛出值得继续分析的问题对象"
   default_prompt: "使用 $ads-portfolio-triage 扫描当前授权广告资产，并给出值得继续分析的对象和原因。"
 
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "auxeo_ads_read"
+      description: "Auxeo Ads Read Remote MCP server"
+      transport: "streamable_http"
+      url: "https://ads.hatcher.best/auxeo/mcp"
+
 policy:
   allow_implicit_invocation: true

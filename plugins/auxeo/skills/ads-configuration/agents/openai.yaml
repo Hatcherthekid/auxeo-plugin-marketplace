@@ -3,5 +3,13 @@ interface:
   short_description: "定义实体、指标和标签并核对数据是否可用"
   default_prompt: "使用 $ads-configuration 核对当前授权范围内的实体、指标、标签、source authority 和 freshness，并指出仍不能判断的定义。"
 
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "auxeo_ads_read"
+      description: "Auxeo Ads Read Remote MCP server"
+      transport: "streamable_http"
+      url: "https://ads.hatcher.best/auxeo/mcp"
+
 policy:
   allow_implicit_invocation: true
