@@ -1,6 +1,6 @@
 {
   "name": "auxeo",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Auxeo — Chat to Growth：由服务端能力合同驱动的只读广告查询、自由分析与受治理配置草案插件。",
   "author": {
     "name": "Auxeo"
@@ -19,7 +19,7 @@
   "interface": {
     "displayName": "Auxeo",
     "shortDescription": "在当前授权范围内自由查询和分析广告数据，并形成配置草案",
-    "longDescription": "Auxeo — Chat to Growth。Plugin 只保存稳定的只读 bootstrap、OAuth 资源和意图级 Skills；可用资源、字段、指标口径、查询路径、下钻关系、分析 guidance 以及报告、监控和交付能力的可用状态与限制，均由 Auxeo 服务端按当前用户权限动态提供。Ads Read 未发布的 Control 能力只形成草案，不声称已配置或已发送。日常服务端更新通常只需新建任务或重连，不要求重新安装 Plugin。广告平台 Write 未开放。",
+    "longDescription": "Auxeo — Chat to Growth。Plugin 只保存稳定的只读 bootstrap、OAuth 资源和意图级 Skills；可用资源、字段、指标口径、查询路径、下钻关系、分析 guidance 以及报告、监控和交付能力的可用状态与限制，均由 Auxeo 服务端按当前用户权限动态提供。若 Codex Host 能读取 MCP Resources 但未向任务披露自定义 Tools，服务端提供共享相同授权和查询实现的 Resource Bridge 恢复入口。Ads Read 未发布的 Control 能力只形成草案，不声称已配置或已发送。日常服务端更新通常只需新建任务或重连，不要求重新安装 Plugin。广告平台 Write 未开放。",
     "developerName": "Auxeo",
     "category": "Data & Analytics",
     "capabilities": [

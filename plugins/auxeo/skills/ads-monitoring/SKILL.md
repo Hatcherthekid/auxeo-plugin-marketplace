@@ -9,6 +9,8 @@ description: 解释和配置广告监控意图，覆盖经营、投放状态、�
 
 新任务先调用 `ads_capability_context`，确认当前授权资源、可用监控能力、数据健康与可用 destination。不要把 App 当作权限边界。
 
+若当前 Host 能读取 Auxeo MCP Resources、但没有披露依赖的自定义 Tool，先读取 `ads-contract://host-tool-fallback-v1`，再按其中的 `ads-query://execute/{tool_name}{?arguments}` Resource Template 调用同一只读能力。该入口仅用于 Host 恢复，不扩大权限，也不得绕过正常 Tool。
+
 ## 编排
 
 1. 明确监控对象、窗口、时区、比较基线、严重度和期望通知方式。

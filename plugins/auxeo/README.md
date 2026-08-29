@@ -18,6 +18,12 @@ This release requires Codex CLI/Desktop 0.144.5 or newer. Plugins are not
 supported in the Codex IDE extension. The unique `auxeo_ads_read` name avoids
 overwriting an existing local `ads_read` MCP server.
 
+If a Host can read MCP Resources but does not expose Auxeo custom Tools in the
+active task, read `ads-contract://host-tool-fallback-v1` and use the governed
+`ads-query://execute/{tool_name}{?arguments}` Resource Template. This recovery
+path uses the same OAuth, membership, resource scope, validation, deadline, and
+artifact ownership as the normal Tool path.
+
 The marketplace is public, but data is not. Reading Auxeo data requires Auth0
 sign-in, active organization membership, and an assigned resource scope. This
 package contains no backend source code, advertising credentials, tokens, or data.

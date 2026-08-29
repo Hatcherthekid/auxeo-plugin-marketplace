@@ -9,6 +9,8 @@ description: 对当前授权广告资产做跨范围巡检、排序和问题分�
 
 新任务先调用 `ads_capability_context`。由当前 principal 的资源范围决定模型能看到什么；App 只是可选分析 facet，一个账户可服务多个 App。
 
+若当前 Host 能读取 Auxeo MCP Resources、但没有披露依赖的自定义 Tool，先读取 `ads-contract://host-tool-fallback-v1`，再按其中的 `ads-query://execute/{tool_name}{?arguments}` Resource Template 调用同一只读能力。该入口仅用于 Host 恢复，不扩大权限，也不得绕过正常 Tool。
+
 ## 编排
 
 1. 从用户目标确定日期、比较窗口、业务指标和需要扫描的授权范围。
